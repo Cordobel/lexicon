@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Atividade do projetos</title>
+	</head>
+	<body>
+		<div>
+			<a href="/projetos/">Projetos</a>
+		</div>
+		
+		<h1>{{ projeto.nome_do_projeto }}</h1>
+		{% if projeto.atividades_set.all %}
+			<ul>
+			{% for atividade in projeto.atividades_set.all %}
+				<li>{{ atividade.nome_atividade }}</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>O projeto {{ projeto.nome_do_projeto }} nao tem atividades definidas</p>
+		{% endif %}
+
+		<a href="{% url 'projetos:detail' projetos.id %}">Vote again?</a>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Projeto {{ projeto.nome_do_projeto }}</title>
+  </head>
+  <body>
+    <h1>{{ projetos.nome_do_projetos }}</h1>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <form action="{% url 'projetos:addatividade' projetos.id %}" method="post">
+      {% csrf_token %}
+      <label for="nome_atividade">Atividade</label>&nbsp;
+      <input type="text" name="nome_atividade" id="nome_atividade"><br>
+      
+      <label for="data_inicio">Iniciar</label>&nbsp;
+      <input type="text" name="data_inicio" id="data_inicio"><br>
+      
+      <label for="data_fim">Finalizar</label>&nbsp;
+      <input type="text" name="data_fim" id="data_fim"><br>
+
+      <input type="submit">
+    </form>
+  </body>
+</html>

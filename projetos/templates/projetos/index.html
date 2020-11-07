@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Projetos</title>
+  </head>
+  <body>
+    {% if ultimos_projetos %}
+        <ul>
+        {% for projetos in ultimos_projetos %}
+            <li><a href="{% url 'projetos:detail' projetos.id %}">{{ projetos.nome_do_projeto }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nao ha projetos.</p>
+    {% endif %}
+  </body>
+</html>
