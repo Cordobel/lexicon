@@ -1,24 +1,35 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.views import generic
 
 from .models import Projetos, Atividades
 
-def index(request):
-    ultimos_projetos = Projetos.objects.order_by('id')[:5]
-    context = {'ultimos_projetos': ultimos_projetos}
-    return render(request, 'projetos/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'projetos/index.html'
+    context_object_name = 'ultimos_projetos'
 
-def detail(request, projetos_id):
-    projeto = get_object_or_404(Projetos, pk=projetos_id)
-    return render(request, 'projetos/detail.html', {'projeto': projeto})
+    def get_queryset(self):
+        return Projetos.objects.order_by('id')[:5]
 
-def addatividade(request, projetos_id):
-    projeto = get_object_or_404(Projetos, pk=projetos_id)
-    nova_atividade = projeto.atividade_set.get(pk=request.POST['nome_atividade'])
-    return render(request, 'projetos/detail.html', {'projeto':projeto})
-    #return HttpResponseRedirect(reverse('projetos:results', args=(projetos.id,)))
+class DetailView(generic.DetailView):
+    model = Projetos
+    template_name = 'projetos/detail.html'
 
-def results(request, projetos_id):
+class ResultsView(generic.DetailView):
+    model = Projetos
+    template_name = 'projetos/results.html'
+
+def atividade(request, projetos_id):
     projeto = get_object_or_404(Projetos, pk=projetos_id)
-    return render(request, 'projetos/results.html', {'projeto': projeto})
+    try:
+        adividade_selecionada = projeto.atividades_set.get(pk=request.POST['atividade'])
+    except (KeyError, Atividades.DoesNotExist):
+        return render(request, 'projetos/detail.html', {
+            'projeto': projeto,
+            'error_message': "Vc não selecionou uma atividade.",
+        })
+    else:
+        adividade_selecionada.nome_atividade = 'A escolha da tecnologia'
+        adividade_selecionada.save()
+        return HttpResponseRedirect(reverse('projetos:results', args=(projeto.id,)))

@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Projeto {{ projeto.nome_do_projeto }}</title>
-  </head>
-  <body>
-    <h1>{{ projetos.nome_do_projetos }}</h1>
+<h1>{{ projetos.nome_do_projeto }}</h1>
 
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-    <form action="{% url 'projetos:addatividade' projetos.id %}" method="post">
-      {% csrf_token %}
-      <label for="nome_atividade">Atividade</label>&nbsp;
-      <input type="text" name="nome_atividade" id="nome_atividade"><br>
-      
-      <label for="data_inicio">Iniciar</label>&nbsp;
-      <input type="text" name="data_inicio" id="data_inicio"><br>
-      
-      <label for="data_fim">Finalizar</label>&nbsp;
-      <input type="text" name="data_fim" id="data_fim"><br>
-
-      <input type="submit">
-    </form>
-  </body>
-</html>
+<form action="{% url 'projetos:atividade' projetos.id %}" method="post">
+	{% csrf_token %}
+	{% for atividade in projetos.atividades_set.all %}
+	
+	<input type="radio" name="atividade" id="atividade{{ forloop.counter }}" value="{{ atividade.id }}">
+	<label for="atividade{{ forloop.counter }}">{{ atividade.id_projeto }} -- {{ atividade.nome_atividade }} -- {{ atividade.data_inicio }} -- {{ atividade.data_fim }} -- {{ atividade.finalizada }}</label><br>
+	
+	{% endfor %}
+	
+	<input type="submit" value="Vote">
+</form>

@@ -8,13 +8,8 @@ class Projetos(models.Model):
     data_inicio = models.DateTimeField('Iniciado')
     data_fim = models.DateTimeField('Finalizado')
 
-    class Meta:
-        verbose_name_plural = "Projetos"
-
     def __str__(self):
         return self.nome_do_projeto
-    def tempo_de_inicializacao(self):
-        return self.data_inicio >= timezone.now() - datetime.timedelta(days=1)
 
 class Atividades(models.Model):
     id_projeto = models.ForeignKey(Projetos, on_delete=models.CASCADE)
@@ -22,9 +17,6 @@ class Atividades(models.Model):
     data_inicio = models.DateTimeField('Iniciar')
     data_fim = models.DateTimeField('Finalizar')
     finalizada = models.BooleanField()
-
-    class Meta:
-        verbose_name_plural = "Atividades"
 
     def __str__(self):
         return self.nome_atividade
