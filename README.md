@@ -1,0 +1,6 @@
+# Sobre o repositório Lexicon
+Pretende se tornar um conjunto de soluções para gestão pessoal de atividades ou criação de conteúdo e a primeira é o Lexicon Projetos impulsionada pela proposta de um desafio.
+## A inspiração para o nome
+Veio do momento em que criei minha conta aqui no GitHub pois horas antes eu estava jogando Skyrim e pela primeira vez fiz a quest "Unfathomeble Depths" na qual o protagonista do jogo recebe um objeto chamado Lexicon que armazena e repassa conhecimento antigo de uma civilização há muito tempo desaparecida. Impressionado como sempre pela qualidade e riqueza das histórias nas quests da série ‘The Elder Scrolls’ busquei entender mais sobre o objeto e o significado da palavra Lexicon que traduzido é léxico e significa o conjunto de palavras de uma língua, logo a meu ver é a base de todos os sistemas de informação. Então porque não o usar como nome, seguindo a própria sugestão do GitHub, curto e memorável.
+# A escolha da tecnologia
+Meu olhar voltou-se aos Frameworks quem vem surgindo nos últimos tempos para facilitar o desenvolvimento de software e apesar de que na maior parte da minha carreira eu tenho trabalhado com .NET, eu vi no Django e em sua documentação uma facilidade, clareza e agilidade diferente dos demais.
