@@ -1,16 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'projetos/style.css' %}">
     <title>Projetos</title>
   </head>
   <body>
     {% if ultimos_projetos %}
-        <ul>
-        {% for projetos in ultimos_projetos %}
-            <li><a href="{% url 'projetos:detail' projetos.id %}">{{ projetos.nome_do_projeto }}</a></li>
+      {% for projetos in ultimos_projetos %}
+        <h1><a href="{% url 'projetos:detail' projetos.id %}">{{ projetos.nome_do_projeto }}</a></h1>
+        <p>Atividades em andamento {{ projetos.atividades_set.count }}</p>
+        {% for atividades in projetos.atividades_set.all %}
+          <div>{{ atividades.nome_atividade }}</div>
         {% endfor %}
-        </ul>
+      {% endfor %}
     {% else %}
         <p>Nao ha projetos.</p>
     {% endif %}

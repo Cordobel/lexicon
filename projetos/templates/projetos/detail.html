@@ -2,14 +2,9 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'projetos:atividade' projetos.id %}" method="post">
-	{% csrf_token %}
-	{% for atividade in projetos.atividades_set.all %}
-	
-	<input type="radio" name="atividade" id="atividade{{ forloop.counter }}" value="{{ atividade.id }}">
-	<label for="atividade{{ forloop.counter }}">{{ atividade.id_projeto }} -- {{ atividade.nome_atividade }} -- {{ atividade.data_inicio }} -- {{ atividade.data_fim }} -- {{ atividade.finalizada }}</label><br>
-	
-	{% endfor %}
-	
-	<input type="submit" value="Vote">
-</form>
+{% csrf_token %}
+{% for atividade in projetos.atividades_set.all %}
+
+<p>{{ atividade.id_projeto }} -- {{ atividade.nome_atividade }} -- {{ atividade.data_inicio }} -- {{ atividade.data_fim }} -- {{ atividade.finalizada }}</p><br>
+
+{% endfor %}
