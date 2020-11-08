@@ -10,4 +10,4 @@ Ao clicar no link Projetos é então exibido um resumo de cada contendo a quanti
 Os títulos dos projetos são clicáveis e assim exibem seus detalhes que são:
 * Progresso, percentual de atividades concluídas em relação ao total
 * Indicador de previsão de atraso ou não
-* Indicador de atraso, bom base na data final da atividade mais longa bem como uma verificação desta data com o dia atual e se há atividades em andamento mesmo após o respecitvo prazo.
+* Indicador de atraso, bom base na data final da atividade mais longa bem como uma verificação desta data com o dia atual e se há atividades em andamento mesmo após o respectivo prazo.
