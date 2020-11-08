@@ -5,9 +5,18 @@ Veio do momento em que criei minha conta aqui no GitHub pois horas antes eu esta
 # A escolha da tecnologia
 Meu olhar voltou-se aos Frameworks quem vem surgindo nos últimos tempos para facilitar o desenvolvimento de software e apesar de que na maior parte da minha carreira eu tenho trabalhado com .NET, vi no Django e em sua documentação uma facilidade, clareza e agilidade diferente dos demais.
 # Funcionamento
-A página inicial, raiz, apresenta o título do projeto e os links Projetos e Administração.
-Ao clicar no link Projetos é então exibido um resumo de cada contendo a quantidade de atividades e o título de cada uma.
-Os títulos dos projetos são clicáveis e assim exibem seus detalhes que são:
+
+### A página inicial, raiz, apresenta o título do projeto e os links Projetos e Administração.
+
+<img src="https://github.com/Cordobel/lexicos_imagens/blob/main/Captura%20de%20tela%202020-11-08%20181906.png">
+
+### Ao clicar no link Projetos é então exibido um resumo de cada contendo a quantidade de atividades e o título de cada uma.
+
+<img src="https://github.com/Cordobel/lexicos_imagens/blob/main/Captura%20de%20tela%202020-11-08%20184502.png">
+
+### Os títulos dos projetos são clicáveis e assim exibem seus detalhes que são:
 * Progresso, percentual de atividades concluídas em relação ao total
 * Indicador de previsão de atraso ou não
 * Indicador de atraso, bom base na data final da atividade mais longa bem como uma verificação desta data com o dia atual e se há atividades em andamento mesmo após o respectivo prazo.
+
+<img src="https://github.com/Cordobel/lexicos_imagens/blob/main/Captura%20de%20tela%202020-11-08%20184545.png">
