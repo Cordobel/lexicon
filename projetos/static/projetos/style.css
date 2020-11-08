@@ -1,5 +1,25 @@
-a {
+html, body, form {
+    height: 100%;
+    margin: 3px;
+    padding: 3px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1, a {
     color: #A3C932;
     font-size: xx-large;
-    font-family: Arial, Helvetica, sans-serif
+}
+
+p {
+    font-size: large;
+}
+
+table {
+    border: #A3C932;
+    border-collapse: collapse;
+}
+
+.tdcentralizada {
+    text-align: center;
 }

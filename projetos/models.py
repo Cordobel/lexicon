@@ -8,6 +8,9 @@ class Projetos(models.Model):
     data_inicio = models.DateTimeField('Iniciado')
     data_fim = models.DateTimeField('Finalizado')
 
+    class Meta:
+        verbose_name_plural = "Projetos"
+
     def __str__(self):
         return self.nome_do_projeto
 
@@ -17,6 +20,9 @@ class Atividades(models.Model):
     data_inicio = models.DateTimeField('Iniciar')
     data_fim = models.DateTimeField('Finalizar')
     finalizada = models.BooleanField()
+
+    class Meta:
+        verbose_name_plural = "Atividades"
 
     def __str__(self):
         return self.nome_atividade

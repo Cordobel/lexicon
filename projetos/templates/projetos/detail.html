@@ -1,10 +1,46 @@
-<h1>{{ projetos.nome_do_projeto }}</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'projetos/style.css' %}">
+        <title>{{ projeto.nome_do_projeto }}</title>
+    </head>
+    <body>
+        <h1><a href="/projetos/">{{ projeto.nome_do_projeto }}</a></h1>
+        
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% csrf_token %}
 
-{% csrf_token %}
-{% for atividade in projetos.atividades_set.all %}
+        <p>Progresso: {{ progresso }}%</p>
+        <div>Prazo {{ atividade_maior_prazo_data_fim|date:"SHORT_DATE_FORMAT" }}</div>
+        {% if previsao_atrazo %}<p>Previsto atrasar? Sim</p>{% else %}<p>Previsto atrasar? Não</p>{% endif %}
+        {% if atrasado %}<p>Atrasado? Sim. O prazo é {{ atividade_maior_prazo_data_fim|date:"SHORT_DATE_FORMAT" }} e ainda há {{ quantidade_atividades_andamento }} atividade(s) em andamento </p>{% else %}<p>Atrasado? Não</p>{% endif %}
 
-<p>{{ atividade.id_projeto }} -- {{ atividade.nome_atividade }} -- {{ atividade.data_inicio }} -- {{ atividade.data_fim }} -- {{ atividade.finalizada }}</p><br>
-
-{% endfor %}
+        {% if lista_atividades %}
+        <table border="1" width="100%">
+            <tr>
+                <th>Nome Atividade</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Finalizada</th>
+            </tr>
+            {% for atividade in lista_atividades %}
+            <tr>
+                <td>{{ atividade.nome_atividade }}</td>
+                <td class="tdcentralizada">{{ atividade.data_inicio|date:"SHORT_DATE_FORMAT" }}</td>
+                <td class="tdcentralizada">{{ atividade.data_fim|date:"SHORT_DATE_FORMAT" }}</td>
+                {% if atividade.finalizada %}
+                <td class="tdcentralizada">Sim</td>
+                {% else %}
+                <td class="tdcentralizada">Não</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>Nao ha atividades.</p>
+        {% endif %}
+    </body>
+</html>
